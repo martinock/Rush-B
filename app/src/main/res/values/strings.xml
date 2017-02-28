@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Rush-B</string>
+
+    <!--Common -->
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="submit">Submit</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email_empty_error">Please fill in your email</string>
+    <string name="password_empty_error">Please fill in your password</string>
+    <string name="confirm_password_empty_error">Please fill in your password confirmation</string>
+    <string name="password_confirmation_error">Password do not match</string>
+    <string name="username_empty_error">Please fill in your username</string>
+    <string name="yourname_empty_error">Please fill in your name</string>
+    <string name="time_remaining">Time Remaining</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="hello_blank_fragment">Fuck</string>
+    <string name="auth_failed">Authentication Failed</string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="insert_secret_key">Insert secret key here</string>
+    <string name="defuse_button">Defuse the bomb!</string>
+    <string name="you_are_here">You are here:</string>
+
+
+    <!--SignInActivity String-->
+    <string name="go_to_sign_up">Don\'t have an account?</string>
+
+    <!--SignUpActivity String-->
+    <string name="confirm_password">Confirm Password</string>
+    <string name="go_to_sign_in">Already have an account?</string>
+
+    <!-- FragmentStatistic String -->
+    <string name="name_string">S. Bunejje</string>
+    <string name="clan_string">Counter Terrorist</string>
+    <string name="username_string">ID :</string>
+    <string name="user_number_string">ID Number : </string>
+    <string name="bomb_defused_string">Bomb Defused : </string>
+    <string name="time_spent_string">Time Spent : </string>
+    <string name="distance_string">Distance : </string>
+
+    <!-- Defuse Bomb String -->
+    <string name="defuse">Defuse</string>
+    <string name="secret_code_found_title">Secret Code Found</string>
+    <string name="secret_code_found_body">You found the secret code. The code is %1$s. This code will be send to your comrade instantly.</string>
+    <string name="defuse_bomb_title">Defuse The Bomb!</string>
+    <string name="defuse_bomb_description">Insert the decrypted code below</string>
+    <string name="attempt">Attempt:</string>
+    <string name="insert_code_here">Insert Code Here</string>
+    <string name="bomb_defused">Bomb defused! Congratulations!</string>
+    <string name="bomb_exploded">Bomb exploded! You lose!</string>
+</resources>
