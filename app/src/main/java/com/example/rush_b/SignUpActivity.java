@@ -65,7 +65,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        etUsername = (EditText) findViewById(R.id.username_edit_text);
         etYourName = (EditText) findViewById(R.id.your_name_edit_text);
         etPassword = (EditText) findViewById(R.id.password_edit_text);
         etConfirmPassword = (EditText) findViewById(R.id.confirm_password_edit_text);
@@ -76,11 +75,12 @@ public class SignUpActivity extends AppCompatActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = etUsername.getText().toString().trim();
+                String email = etEmail.getText().toString().trim();
+                String username = usernameFromEmail(email);
                 String yourname = etYourName.getText().toString().trim();
                 String password = etPassword.getText().toString().trim();
                 String confirmPassword = etConfirmPassword.getText().toString().trim();
-                String email = etEmail.getText().toString().trim();
+
                 if (!email.isEmpty() && !yourname.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && !username.isEmpty()) {
                     if (password.equals(confirmPassword)) {
                         createAccount(username, yourname, email, password);
@@ -154,9 +154,9 @@ public class SignUpActivity extends AppCompatActivity {
                             Toast.makeText(SignUpActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            User user = new User(username, yourname, email, password);
+                            User user = new User(username, yourname, email);
                             Toast.makeText(SignUpActivity.this, "Account has been made successfully", Toast.LENGTH_LONG).show();
-                            myUser.setValue(user);
+                            myUser.child(username).setValue(user);
                             SharedPreferences sp = getSharedPreferences(
                                     SplashActivity.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sp.edit();
@@ -194,6 +194,15 @@ public class SignUpActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(items);
         }
     }
+
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
+    }
+
 
     @Override
     public void onBackPressed() {

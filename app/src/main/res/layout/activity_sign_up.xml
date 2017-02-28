@@ -12,19 +12,19 @@
     tools:context="com.example.rush_b.SignInActivity">
 
     <EditText
-        android:id="@+id/username_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/username"
-        android:drawableLeft="@drawable/ic_perm_identity_black_24dp"/>
-
-    <EditText
         android:id="@+id/your_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/username"
-        android:layout_marginTop="@dimen/edit_text_margin"
+        android:hint="@string/yourname"
         android:drawableLeft="@drawable/ic_perm_identity_black_24dp"/>
+
+    <EditText
+        android:id="@+id/email_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:layout_marginTop="@dimen/edit_text_margin"
+        android:drawableLeft="@drawable/ic_mail_outline_black_24dp"/>
 
     <EditText
         android:id="@+id/password_edit_text"
@@ -43,14 +43,6 @@
         android:inputType="textPassword"
         android:layout_marginTop="@dimen/edit_text_margin"
         android:drawableLeft="@drawable/ic_lock_outline_black_24dp"/>
-
-    <EditText
-        android:id="@+id/email_edit_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email"
-        android:layout_marginTop="@dimen/edit_text_margin"
-        android:drawableLeft="@drawable/ic_mail_outline_black_24dp"/>
 
     <Button
         android:id="@+id/button_sign_up"

@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -74,9 +75,10 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = etEmail.getText().toString().trim();
+                String username = usernameFromEmail(email);
                 String password = etPassword.getText().toString().trim();
                 if (!email.isEmpty() && !password.isEmpty()) {
-                    signIn(email, password);
+                    signIn(email, username, password);
                 } else {
                     if (email.isEmpty()) {
                         etEmail.setError(getString(R.string.email_empty_error));
@@ -116,7 +118,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     // [END on_stop_remove_listener]
 
-    private void signIn(final String email, String password) {
+    private void signIn(final String email, final String username, String password) {
         final String[] emailCheck = new String[1];
         Log.d(TAG, "signIn:" + email);
 
@@ -139,26 +141,26 @@ public class SignInActivity extends AppCompatActivity {
                         }
                         else {
                             final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            final DatabaseReference myUser = database.getReference("user");
+                            final DatabaseReference myUser = database.getReference("user/"+username);
                             myUser.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     user = dataSnapshot.getValue(User.class);
-                                    SharedPreferences sp = getSharedPreferences(
-                                            SplashActivity.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sp.edit();
-                                    editor.putString(MainViewActivity.EXTRA_USERNAME, user.username);
-                                    editor.putString(MainViewActivity.EXTRA_NAME, user.name);
-                                    editor.putInt(MainViewActivity.EXTRA_BOMB_DEFUSED, user.bombDefused);
-                                    editor.putInt(MainViewActivity.EXTRA_TIME_SPENT, user.timeSpent);
-                                    editor.apply();
-                                    Intent intent = new Intent(getApplicationContext(), MainViewActivity.class);
-                                    intent.putExtra(MainViewActivity.EXTRA_USERNAME, user.username);
-                                    intent.putExtra(MainViewActivity.EXTRA_NAME, user.name);
-                                    intent.putExtra(MainViewActivity.EXTRA_BOMB_DEFUSED, user.bombDefused);
-                                    intent.putExtra(MainViewActivity.EXTRA_TIME_SPENT, user.timeSpent);
-                                    startActivity(intent);
-                                    finish();
+                                        SharedPreferences sp = getSharedPreferences(
+                                                SplashActivity.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sp.edit();
+                                        editor.putString(MainViewActivity.EXTRA_USERNAME, user.username);
+                                        editor.putString(MainViewActivity.EXTRA_NAME, user.name);
+                                        editor.putInt(MainViewActivity.EXTRA_BOMB_DEFUSED, user.bombDefused);
+                                        editor.putInt(MainViewActivity.EXTRA_TIME_SPENT, user.timeSpent);
+                                        editor.apply();
+                                        Intent intent = new Intent(getApplicationContext(), MainViewActivity.class);
+                                        intent.putExtra(MainViewActivity.EXTRA_USERNAME, user.username);
+                                        intent.putExtra(MainViewActivity.EXTRA_NAME, user.name);
+                                        intent.putExtra(MainViewActivity.EXTRA_BOMB_DEFUSED, user.bombDefused);
+                                        intent.putExtra(MainViewActivity.EXTRA_TIME_SPENT, user.timeSpent);
+                                        startActivity(intent);
+                                        finish();
                                 }
 
                                 @Override
@@ -181,6 +183,14 @@ public class SignInActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(items);
+        }
+    }
+
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
         }
     }
 

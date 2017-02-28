@@ -8,6 +8,7 @@
     <string name="submit">Submit</string>
     <string name="email">Email</string>
     <string name="username">Username</string>
+    <string name="yourname">Your Name</string>
     <string name="password">Password</string>
     <string name="email_empty_error">Please fill in your email</string>
     <string name="password_empty_error">Please fill in your password</string>

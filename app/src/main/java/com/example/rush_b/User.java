@@ -6,7 +6,6 @@ package com.example.rush_b;
 public class User {
     public String username;
     public String name;
-    public String password;
     public String email;
     public int bombDefused;
     public int timeSpent;
@@ -15,10 +14,9 @@ public class User {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String username, String name, String email, String password) {
+    public User(String username, String name, String email) {
         this.username = username;
         this.name = name;
-        this.password = password;
         this.email = email;
         this.bombDefused = 0;
         this.timeSpent = 0;

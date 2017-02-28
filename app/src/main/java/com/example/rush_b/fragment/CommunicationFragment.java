@@ -79,13 +79,11 @@ public class CommunicationFragment extends Fragment {
             public void onClick(View v) {
                 String message = messageArea.getText().toString();
                 if (!message.equals("")) {
-                    Map<String, String> map = new HashMap<String, String>();
-                    map.put("message", message);
                     ref1.child("user")
                             .child(getActivity()
                                     .getIntent()
                                     .getStringExtra(MainViewActivity.EXTRA_USERNAME))
-                            .child("message").setValue(map);
+                            .child("message").push().setValue(message);
                 }
             }
         });
