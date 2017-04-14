@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.rush_b.BluetoothDeviceListActivity;
 import com.example.rush_b.FirstLandingActivity;
 import com.example.rush_b.R;
 
@@ -68,23 +69,8 @@ public class HomeFragment extends Fragment implements SensorEventListener {
         defuseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String answer = "qontlo";
-                int attempt = 3;
-                final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                final EditText input = (EditText) view.findViewById(R.id.answer_edit_text);
-                LayoutInflater inflater = getActivity().getLayoutInflater();
-                builder.setView(inflater.inflate(R.layout.alert_dialog_edit_text, null));
-                    builder.setMessage("Type the secret message below. Attempts: " + attempt);
-                    builder.setPositiveButton("SUBMIT",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                    InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
-                                    inputMethodManager.hideSoftInputFromWindow(inflatedLayout.getWindowToken(), 0);
-                                }
-                            }
-                    );
-                builder.show();
+                Intent intent = new Intent(getActivity().getApplicationContext(), BluetoothDeviceListActivity.class);
+                startActivity(intent);
             }
         });
         return inflatedLayout;

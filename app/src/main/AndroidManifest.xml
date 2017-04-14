@@ -3,11 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.rush_b">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-sdk android:minSdkVersion="15"
-        tools:overrideLibrary="com.firebase.ui"/>
-    
+    <uses-sdk
+        android:minSdkVersion="15"
+        tools:overrideLibrary="com.firebase.ui" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="false"
         android:icon="@drawable/rush_b_logo"
@@ -25,9 +32,9 @@
         </activity>
         <activity
             android:name=".FirstLandingActivity"
-            android:theme="@style/AppTheme.Launch"
             android:noHistory="true"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:theme="@style/AppTheme.Launch"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".SignInActivity"
             android:label="@string/sign_in"
@@ -39,10 +46,12 @@
         <activity
             android:name=".MainViewActivity"
             android:theme="@style/AppTheme.Main"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".BarcodeScanner"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".BarcodeScanner"
             android:theme="@style/AppTheme.Main"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -53,22 +62,27 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
         AndroidManifest.xml
-        <service
-            android:name=".firebase.RushBFirebaseMessagingService">
+        <service android:name=".firebase.RushBFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".firebase.RushBFirebaseInstanceIDService">
+        <service android:name=".firebase.RushBFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service
             android:name=".FetchAddressIntentService"
-            android:exported="false"/>
+            android:exported="false" />
 
+        <activity
+            android:name=".BluetoothDeviceListActivity"
+            android:theme="@style/AppTheme.Main" />
+        <activity android:name=".DefuseBombActivity"
+            android:theme="@style/AppTheme.Main">
+
+        </activity>
     </application>
 
 </manifest>

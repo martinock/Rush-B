@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rush_b.DefuseBombActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter the secret code:"
+        android:textSize="@dimen/large_text_size"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attempt : "
+            android:textSize="@dimen/large_text_size"/>
+        <TextView
+            android:id="@+id/attempt_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="@dimen/large_text_size"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/secret_code_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter secret code here"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/send_secret_code_button"
+        android:layout_width="@dimen/sign_in_button_width"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#FFF000"
+        android:text="Defuse"
+        android:textColor="@color/colorPrimary"
+        />
+
+</LinearLayout>
