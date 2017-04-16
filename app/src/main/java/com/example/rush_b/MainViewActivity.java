@@ -119,6 +119,7 @@ public class MainViewActivity extends AppCompatActivity implements
     public static final String EXTRA_BOMB_DEFUSED = "Bomb Defused";
     public static final String EXTRA_TIME_SPENT = "Time Spent";
     public static final String EXTRA_NAME = "name";
+    public static final String EXTRA_STATUS = "status";
     public static String LOCATION;
     public static String WEATHER;
 

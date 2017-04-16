@@ -153,12 +153,14 @@ public class SignInActivity extends AppCompatActivity {
                                         editor.putString(MainViewActivity.EXTRA_NAME, user.name);
                                         editor.putInt(MainViewActivity.EXTRA_BOMB_DEFUSED, user.bombDefused);
                                         editor.putInt(MainViewActivity.EXTRA_TIME_SPENT, user.timeSpent);
+                                        editor.putBoolean(MainViewActivity.EXTRA_STATUS, user.status);
                                         editor.apply();
                                         Intent intent = new Intent(getApplicationContext(), MainViewActivity.class);
                                         intent.putExtra(MainViewActivity.EXTRA_USERNAME, user.username);
                                         intent.putExtra(MainViewActivity.EXTRA_NAME, user.name);
                                         intent.putExtra(MainViewActivity.EXTRA_BOMB_DEFUSED, user.bombDefused);
                                         intent.putExtra(MainViewActivity.EXTRA_TIME_SPENT, user.timeSpent);
+                                        intent.putExtra(MainViewActivity.EXTRA_STATUS, user.status);
                                         startActivity(intent);
                                         finish();
                                 }

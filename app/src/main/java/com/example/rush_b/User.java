@@ -9,6 +9,7 @@ public class User {
     public String email;
     public int bombDefused;
     public int timeSpent;
+    public boolean status;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -20,6 +21,7 @@ public class User {
         this.email = email;
         this.bombDefused = 0;
         this.timeSpent = 0;
+        this.status = false;
     }
 }
 

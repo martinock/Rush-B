@@ -164,12 +164,14 @@ public class SignUpActivity extends AppCompatActivity {
                             editor.putString(MainViewActivity.EXTRA_NAME, yourname);
                             editor.putInt(MainViewActivity.EXTRA_BOMB_DEFUSED, 0);
                             editor.putInt(MainViewActivity.EXTRA_TIME_SPENT, 0);
+                            editor.putBoolean(MainViewActivity.EXTRA_STATUS, false);
                             editor.apply();
                             Intent intent = new Intent(getApplicationContext(), MainViewActivity.class);
                             intent.putExtra(MainViewActivity.EXTRA_USERNAME, username);
                             intent.putExtra(MainViewActivity.EXTRA_NAME, yourname);
                             intent.putExtra(MainViewActivity.EXTRA_BOMB_DEFUSED, 0);
                             intent.putExtra(MainViewActivity.EXTRA_TIME_SPENT, 0);
+                            intent.putExtra(MainViewActivity.EXTRA_STATUS, false);
                             startActivity(intent);
                             finish();
                         }
