@@ -76,8 +76,12 @@ public class StatisticFragment extends Fragment {
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final DatabaseReference myUser = database.getReference("user");
                 SharedPreferences sp = getActivity().getSharedPreferences(
                         SplashActivity.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+                String username = sp.getString(MainViewActivity.EXTRA_USERNAME, "");
+                myUser.child(username).child("status").setValue(false);
                 SharedPreferences.Editor editor = sp.edit();
                 editor.clear();
                 editor.apply();

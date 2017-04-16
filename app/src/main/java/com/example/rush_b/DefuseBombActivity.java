@@ -3,8 +3,10 @@ package com.example.rush_b;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -13,6 +15,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -42,6 +47,8 @@ public class DefuseBombActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_defuse_bomb);
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference myUser = database.getReference("user");
         editText = (EditText) findViewById(R.id.secret_code_edit_text);
         addKeyListener();
         sendButton = (Button) findViewById(R.id.send_secret_code_button);
@@ -56,6 +63,9 @@ public class DefuseBombActivity extends AppCompatActivity {
                     sendData("n");
                     editText.setEnabled(false);
                     sendButton.setEnabled(false);
+                    SharedPreferences sp = getSharedPreferences(SplashActivity.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
+                    String username = sp.getString(MainViewActivity.EXTRA_USERNAME, "");
+                    myUser.child(username).child("status").setValue(false);
                 } else {
                     attempt--;
                     attemptNumber.setText(Integer.toString(attempt));
